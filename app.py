@@ -67,4 +67,4 @@ mount_chainlit(app=app, target="app-chainlit.py", path="/chatbot")
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host="localhost", port=port)
+    uvicorn.run(app, host="0.0.0.0", port=port)
