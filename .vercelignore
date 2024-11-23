@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+data
+.venv
+.files
+.chainlit
+models
+app-real.py
+app1.py
+model.py
