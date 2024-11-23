@@ -2,7 +2,7 @@
 # llama-index
 
 # RAG-chat-with-documents
-Chainlit app for advanced RAG. Uses llamaparse, langchain, qdrant and models from groq.
+Chainlit app for advanced RAG. Uses llamaparse, langchain, qdrant and models from groq for chat completions.
 
 
 
@@ -15,8 +15,14 @@ Chainlit app for advanced RAG. Uses llamaparse, langchain, qdrant and models fro
 ```
 python -m venv .venv
 ```
+## activating virtual env
+# for windows
 ```
 .venv/Scritps/activate
+```
+# for mac or linux
+```
+.venv/bin/activate
 ```
 
 ### Install packages
@@ -27,9 +33,14 @@ pip install -r requirements.txt
 ### Environment variables
 All env variables goes to .env ( cp `.env.sample` to `.env` and paste required env variables)
 
-### Run the python files (following the video to run step by step is recommended)
+### Run the python files only once
 ```
 py ingest.py
+
+```
+
+### Run the chainlit app
+```
 chainlit run app.py
 ```
 
