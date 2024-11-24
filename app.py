@@ -61,7 +61,7 @@ async def predict_prakriti(request: Request):
     config.needs_refresh = True
     return JSONResponse(content={"success": True, "prakriti": config.prakriti})
 
-mount_chainlit(app=app, target="app-chainlit.py", path="/chatbot")
+mount_chainlit(app=app, target="app-chainlit.py", path="/chainlit")
 
 # app.mount('/api', api)
 
