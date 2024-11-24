@@ -8,7 +8,7 @@ COPY . /app
 
 RUN chmod -R 777 /app
 
-RUN uv pip install --system --no-cache-dir -r ./requirements.txt
+RUN uv pip install --system -r ./requirements.txt
 
 EXPOSE 8000
 
