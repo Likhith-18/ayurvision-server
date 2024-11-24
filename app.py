@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 
-port = int(os.getenv('PORT', 5000))
+port = int(os.getenv('PORT', 8000))
 
 
 class PrakritiUpdateRequest(BaseModel):
