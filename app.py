@@ -35,9 +35,9 @@ class PrakritiUpdateRequest(BaseModel):
     prakriti: str
 
 
-@app.get('/')
-def hello():
-    return "hello form likhtih"
+# @app.get('/')
+# def hello():
+#     return "hello form likhtih"
 
 
 # @app.post('/update-prakriti')
@@ -61,7 +61,7 @@ async def predict_prakriti(request: Request):
     config.needs_refresh = True
     return JSONResponse(content={"success": True, "prakriti": config.prakriti})
 
-mount_chainlit(app=app, target="app-chainlit.py", path="/chainlit")
+mount_chainlit(app=app, target="app-chainlit.py", path="/")
 
 # app.mount('/api', api)
 
