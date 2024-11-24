@@ -8,10 +8,16 @@ from config import config
 import os
 import httpx
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.staticfiles import StaticFiles
 
 app = FastAPI()
 
 # api = FastAPI()
+
+
+# @api.get("/")
+# def helloChainlit():
+#     return "this is sub app for chainlit"
 
 
 origins = [
@@ -35,9 +41,9 @@ class PrakritiUpdateRequest(BaseModel):
     prakriti: str
 
 
-# @app.get('/')
-# def hello():
-#     return "hello form likhtih"
+@app.get('/')
+def hello():
+    return "hello form likhtih"
 
 
 # @app.post('/update-prakriti')
@@ -61,10 +67,11 @@ async def predict_prakriti(request: Request):
     config.needs_refresh = True
     return JSONResponse(content={"success": True, "prakriti": config.prakriti})
 
-mount_chainlit(app=app, target="app-chainlit.py", path="/")
-
+mount_chainlit(app=app, target="app-chainlit.py", path="/chatbot")
+app.mount("/chatbot/assets",
+          StaticFiles(directory="./public"), name="assets")
 # app.mount('/api', api)
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host="localhost", port=port)
