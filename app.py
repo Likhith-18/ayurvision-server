@@ -53,7 +53,7 @@ async def predict_prakriti(request: Request):
     # input_data = json.dumps(input_json)
 
     async with httpx.AsyncClient() as client:
-        response = await client.post("http://localhost:3000/mlmodel", json={"data": input_json})
+        response = await client.post("https://ayurvision-mlmodel.onrender.com/mlmodel", json={"data": input_json})
 
     # return {"prediction": result, "update_response": update_response.json()}
     response = response.json()
