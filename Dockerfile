@@ -1,15 +1,13 @@
-FROM python:3.9-slim
+FROM public.ecr.aws/lambda/python:3.9
 
-WORKDIR /app
+COPY requirements.txt .
 
 RUN pip install --upgrade pip && pip install uv
 
-COPY . /app
+RUN pip install --system -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
-RUN chmod -R 777 /app
+COPY . .
 
-RUN uv pip install --system -r ./requirements.txt
+COPY app.py app-chainlit.py config.py ${LAMBDA_TASK_ROOT}
 
-EXPOSE 8000
-
-CMD ["python","app.py"]
+CMD [ "app.handler" ]
