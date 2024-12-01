@@ -4,10 +4,11 @@
 # https://docs.chainlit.io/integrations/langchain
 from dotenv import load_dotenv
 from langchain.chains import RetrievalQA
-from langchain_community.chat_models import ChatOllama
+# from langchain_community.chat_models import ChatOllama
+from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
-from langchain_community.vectorstores import Qdrant
+# from langchain_community.vectorstores import Qdrant
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 import os
@@ -112,8 +113,8 @@ def retrieval_qa_chain(llm, prompt, vectorstore):
 def qa_bot(prakriti):
     print(prakriti)
     embeddings = FastEmbedEmbeddings()
-    vectorstore = Qdrant(
-        client=client, embeddings=embeddings, collection_name="rag")
+    vectorstore = QdrantVectorStore(
+        client=client, embedding=embeddings, collection_name="rag")
     llm = chat_model
     qa_prompt = set_custom_prompt(prakriti)
     qa = retrieval_qa_chain(llm, qa_prompt, vectorstore)

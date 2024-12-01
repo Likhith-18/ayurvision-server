@@ -1,10 +1,11 @@
 fastapi
 uvicorn
 langchain
+langchain-qdrant
 langchain-community
 langchain-groq
 fastembed
-qdrant_client
+qdrant_client==1.11.3
 python-dotenv
 chainlit==1.3.2
 pydantic==2.10.1
